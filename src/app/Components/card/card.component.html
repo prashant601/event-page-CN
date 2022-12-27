@@ -91,7 +91,7 @@
     <!---->
     <div class="status ms-auto">
       <div class="">
-        <button class="register ng-star-inserted">REGISTER NOW</button>
+        <button class="register ng-star-inserted" *ngIf="event.registration_status==='REGISTRATIONS_OPEN'">REGISTER NOW</button>
       </div>
       <!----><!---->
     </div>
