@@ -1,0 +1,288 @@
+<!-- NAVBAR  //////////////////////////////////////////////////////////////////////-->
+<nav class="navbar nav sticky-top navbar-expand-lg bg-secondary">
+  <div class="container-fluid">
+    <a class="navbar-brand ms-5" href="#">
+      <img
+        class=""
+        src="https://files.codingninjas.in/cn-logo-dark-9824.svg"
+        alt="LOGO"
+        width="80"
+        height="34"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-4 dropdown">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Courses
+          </a>
+        </li>
+        <li class="nav-item mx-4">
+          <a class="nav-link active text-white" aria-current="page" href="#"
+            >Scholarship</a
+          >
+        </li>
+        <li class="nav-item dropdown mx-4">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Community
+          </a>
+        </li>
+        <li class="nav-item dropdown mx-4">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Practice
+          </a>
+        </li>
+        <li class="nav-item dropdown mx-4 my-auto nv-item">
+          <a
+            style="margin-top: -10px"
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              class="ms-5 me-3"
+              src="https://files.codingninjas.in/careercamp-12614.svg"
+              alt="LOGO"
+              width="100"
+              height="45"
+            />
+            <button
+              type="button"
+              class="btn btn-sm btn-primary me-2"
+              style="
+                --bs-btn-padding-y: 0.25rem;
+                --bs-btn-padding-x: 0.5rem;
+                --bs-btn-font-size: 0.75rem;
+              "
+            >
+              New
+            </button>
+          </a>
+        </li>
+      </ul>
+      <button class="btn btn-light text-warning mx-3">Login</button>
+      <button class="btn enroll me-5">Enroll now</button>
+    </div>
+  </div>
+</nav>
+
+<!-- NAV ENDS /////////////////////////////////////////////////////////////////////// -->
+
+
+<!-- mobile-tag////////////////////////////////////////////////////////////////////// -->
+<div class="filter-mobile">
+  <button class="btn btn-mobile" (click)="showMobileTags()">
+    <i class="fa fa-filter" aria-hidden="true"></i>
+    Filter Events
+  </button>
+</div>
+<div class="filter-mobile-tag">
+  <app-tags
+  [showMobileTags]="mobileTags"
+  [tagColor]="tagColor"
+  (sendTag)="pushTag($event)"
+  (clearTag)="clearTag($event)"
+  >
+</app-tags>
+</div>
+
+<!-- mobile tags ends///////////////////////////////////////////////////////// -->
+
+<!-- EVENTS BEGINS///////////////////////////////////////////////////////////////////  -->
+
+<div *ngIf="mobileTags === false">
+  <div id="eventsWrapper" class="events-outer-wrapper">
+    <div id="list-header">
+      <div class="header-text">EVENTS &amp; NEWS</div>
+      <div class="header-subtitle">Learn, Compete &amp; Grow</div>
+    </div>
+    <div class="events-wrapper">
+      <div class="tabs event-categories">
+        <a
+          [ngStyle]="
+            event_category == 'ALL_EVENTS' ? { color: 'rgb(255, 132, 0)' } : {}
+          "
+          class="tab selected"
+          (click)="getEventCategory('ALL_EVENTS')"
+        >
+          <i class="fa fa-calendar-check-o fs-3 me-2" aria-hidden="true"></i>
+          All Events </a
+        ><a
+          [ngStyle]="
+            event_category == 'WEBINAR' ? { color: 'rgb(255, 132, 0)' } : {}
+          "
+          class="tab"
+          (click)="getEventCategory('WEBINAR')"
+        >
+          <i class="fa fa-laptop fs-3 me-2" aria-hidden="true"></i>
+          Webinars </a
+        ><a
+          class="tab"
+          (click)="getEventCategory('CODING_EVENT')"
+          [ngStyle]="
+            event_category == 'CODING_EVENT'
+              ? { color: 'rgb(255, 132, 0)' }
+              : {}
+          "
+        >
+          <i class="fa fa-file-code-o fs-3 me-2" aria-hidden="true"></i>
+          Coding Events </a
+        ><a
+          class="tab"
+          (click)="getEventCategory('BOOTCAMP_EVENT')"
+          [ngStyle]="
+            event_category == 'BOOTCAMP_EVENT'
+              ? { color: 'rgb(255, 132, 0)' }
+              : {}
+          "
+        >
+          <i class="fa fa-users fs-3 me-2" aria-hidden="true"></i>
+          Bootcamp Events </a
+        ><a
+          class="tab"
+          (click)="getEventCategory('WORKSHOP')"
+          [ngStyle]="
+            event_category == 'WORKSHOP' ? { color: 'rgb(255, 132, 0)' } : {}
+          "
+        >
+          <i class="fa fa-file-video-o fs-3 me-2" aria-hidden="true"></i>
+          Workshop
+        </a>
+      </div>
+
+      <div class="tabs event-sub-categories">
+        <a
+          class="tab selected"
+          (click)="getEventSubCategory('Upcoming')"
+          [ngStyle]="
+            event_sub_category == 'Upcoming'
+              ? { color: 'rgb(255, 132, 0)' }
+              : {}
+          "
+        >
+          Upcoming </a
+        ><a
+          class="tab"
+          (click)="getEventSubCategory('Archived')"
+          [ngStyle]="
+            event_sub_category == 'Archived'
+              ? { color: 'rgb(255, 132, 0)' }
+              : {}
+          "
+        >
+          Archived </a
+        ><a
+          class="tab"
+          (click)="getEventSubCategory('All Time Favorites')"
+          [ngStyle]="
+            event_sub_category == 'All Time Favorites'
+              ? { color: 'rgb(255, 132, 0)' }
+              : {}
+          "
+        >
+          All Time Favorites </a
+        ><!---->
+      </div>
+      <div class="events-body">
+        <div class="event-cards-container">
+          <!---->
+
+          <div class="events-container ng-star-inserted">
+            <div class="ng-star-inserted" *ngIf="events.length !== 0">
+              <div *ngFor="let event of events; let i = index" class="row">
+                <div class="event col" *ngIf="i % 2 === 0">
+                  <app-card [event]="events[i]"> </app-card>
+                </div>
+                <div
+                  class="event col"
+                  *ngIf="i % 2 === 0 && i < events.length - 1"
+                >
+                  <app-card [event]="events[i + 1]"> </app-card>
+                </div>
+                <!---->
+              </div>
+            </div>
+            <h3
+              class="d-flex justify-content-center"
+              *ngIf="events.length === 0"
+            >
+              No Events Found
+            </h3>
+            <div class="page fs-6" *ngIf="pageCount">
+              <button
+                class="btn px-3 btn-page me-2"
+                (click)="showPrevPage()"
+                [disabled]="curPage == 1"
+              >
+                <
+              </button>
+              Page
+              <input
+                class="mx-2"
+                type="number"
+                style="width: 30px"
+                value="{{ curPage }}"
+                disabled
+              />
+              of
+              {{ pageCount }}
+              <button
+                class="btn px-3 btn-page ms-2 next"
+                (click)="showNextPage()"
+                [disabled]="curPage === pageCount || pageCount === 0"
+              >
+                >
+              </button>
+            </div>
+            <!---->
+          </div>
+        </div>
+
+        <!-- Tags Card//////////////////////////////////////////////////////////////////////////////////// -->
+        <div class="tags-container">
+          <app-tags
+            [tagColor]="tagColor"
+            (sendTag)="pushTag($event)"
+            (clearTag)="clearTag($event)"
+          ></app-tags>
+        </div>
+      </div>
+      <!---->
+    </div>
+  </div>
+  
+<!-- EVENTS PAGE ENDS//////////////////////////////////////////////////////////////-->
+
+  <app-footer> </app-footer>
+</div>

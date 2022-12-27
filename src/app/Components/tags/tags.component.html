@@ -1,0 +1,66 @@
+<div class="full-tag">
+  <div class="tags-container">
+    <div class="heading">Tags</div>
+    <button class="btn btn-sm btn-secondary my-2" (click)="emitClearTag()">
+      Clear All Tags
+    </button>
+    <div class="tags-wrapper">
+      <div
+        class="tag"
+        *ngFor="let tag of showTag; let i = index"
+        [ngStyle]="
+          tagColor[i] === true
+            ? { 'background-color': '#fa7328' }
+            : { color: 'black' }
+        "
+      >
+        <p class="text" (click)="emitTag(tag)">
+          {{ tag }}
+        </p>
+      </div>
+      <!---->
+    </div>
+    <!---->
+  </div>
+
+  <p *ngIf="showTag.length <= 10" class="count" (click)="showTags()">
+    See more tags
+  </p>
+  <p *ngIf="showTag.length > 10" class="count" (click)="showLessTags()">
+    See less tags
+  </p>
+</div>
+
+<!-- for mobile     devices -->
+<div class="full-tag-mobile" *ngIf="showMobileTags">
+  <div class="tags-container">
+    <div class="heading">Tags</div>
+    <button class="btn btn-sm btn-secondary my-2" (click)="emitClearTag()">
+      Clear All Tags
+    </button>
+    <div class="tags-wrapper">
+      <div
+        class="tag"
+        *ngFor="let tag of showTag; let i = index"
+        [ngStyle]="
+          tagColor[i] === true
+            ? { 'background-color': '#fa7328' }
+            : { color: 'black' }
+        "
+      >
+        <p class="text" (click)="emitTag(tag)">
+          {{ tag }}
+        </p>
+      </div>
+      <!---->
+    </div>
+    <!---->
+  </div>
+
+  <p *ngIf="showTag.length <= 10" class="count" (click)="showTags()">
+    See more tags
+  </p>
+  <p *ngIf="showTag.length > 10" class="count" (click)="showLessTags()">
+    See less tags
+  </p>
+</div>

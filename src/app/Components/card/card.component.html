@@ -1,0 +1,100 @@
+<div class="card">
+  <header>
+    <div class="glass">
+      <div class="cover-image-container" style="position: inherit">
+        <div class="glass-main" style="position: inherit; height: 21vh">
+          <img
+            src="{{ event.cover_picture }}"
+            alt="{{ event.name }}"
+            style="width: inherit; height: 21vh; border-radius: 5px"
+          />
+        </div>
+      </div>
+    </div>
+    <!---->
+  </header>
+  <main class="main">
+    <p class="event-name">
+      {{ event.name }}
+    </p>
+    <div class="details ng-star-inserted">
+      <div class="event-info-item">
+        <p class="item-label">
+          <b>Starts on</b>
+        </p>
+        <p class="item-value">
+          {{ startDate }}
+        </p>
+      </div>
+      <div class="event-info-item price ng-star-inserted">
+        <p class="item-label">
+          <b>Entry Fee</b>
+        </p>
+        <p class="item-value ng-star-inserted">Free</p>
+        <!----><!---->
+      </div>
+      <!---->
+      <div class="event-info-item ng-star-inserted">
+        <p class="item-label">
+          <b>Venue</b>
+        </p>
+        <p class="item-value">{{ event.venue }}</p>
+      </div>
+      <!---->
+    </div>
+    <!---->
+    <div class="short-description">
+      {{ event.short_desc }}
+    </div>
+    <div class="tags-container">
+      <div *ngFor="let tag of event.card_tags; let i = index">
+        <div *ngIf="i < 3" class="tag ng-star-inserted">
+          {{ tag }}
+        </div>
+      </div>
+
+      <div *ngIf="tagCount > 3" style="color: rgb(255, 123, 0)">
+        +{{ tagCount - 3 }} more...
+      </div>
+      <!-- <div  class="tag ng-star-inserted">
+          Coding Concepts
+        </div> -->
+      <!----><!---->
+    </div>
+  </main>
+  <footer>
+    <hr />
+    <!-- <div class=""> -->
+    <div class="registered-users ng-star-inserted">
+      <div id="profile-img-container">
+        <div
+          *ngFor="let users of getRegisteredUsers.top_users"
+          class="mat-tooltip-trigger user-image ng-star-inserted"
+          aria-describedby="cdk-describedby-message-236"
+          cdk-describedby-host=""
+        >
+          <img title="{{ users.name }}" src="{{ users.image_url }}" />
+        </div>
+        <!---->
+
+        <!----><!---->
+      </div>
+      <p
+        class="count ng-star-inserted"
+        *ngIf="getRegisteredUsers.other_users_count !== 0"
+      >
+        and <b>{{ getRegisteredUsers.other_users_count }}</b> others
+        participated
+      </p>
+      <!----><!---->
+    </div>
+    <!---->
+    <div class="status ms-auto">
+      <div class="">
+        <button class="register ng-star-inserted">REGISTER NOW</button>
+      </div>
+      <!----><!---->
+    </div>
+    <!-- </div> -->
+  </footer>
+</div>
